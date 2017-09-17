@@ -27,30 +27,31 @@
         <div class="collapse navbar-collapse navbar-right" id="bs-navbar-collapse">
             <ul class="nav navbar-nav">
                 <li class="nav-list-item @if (isset($pageTitle) && $pageTitle === "Home") active @endif">
-                    <a class="nav-link" href="#">Home</a>
+                    <a class="nav-link" href="{{ route('home') }}">Home</a>
                 </li>
-                <li class="nav-list-item @if (isset($pageTitle) && $pageTitle === "Forum") active @endif">
-                    <a class="nav-link" href="#">Forum</a>
-                </li>
-                <li class="nav-list-item @if (isset($pageTitle) && $pageTitle === "News") active @endif">
-                    <a class="nav-link" href="#">News</a>
-                </li>
-                <li class="nav-list-item @if (isset($pageTitle) && $pageTitle === "Members") active @endif">
-                <a class="nav-link" href="#">Members</a>
+                <li class="nav-list-item @if (isset($pageTitle) && $pageTitle === "Heroes") active @endif">
+                <a class="nav-link" href="#">Heroes</a>
                 </li>
                 @if (Auth::check())
                     <li class="nav-list-item">
                         <a class="nav-link" href="#">{{ Auth::user()->username }}</a>
                     </li>
                     <li class="nav-list-item">
-                        <a class="nav-link" href="#">Logout</a>
+                        <a class="nav-link" href="{{ route('logout') }}"
+                           onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">
+                            Logout
+                        </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            {{ csrf_field() }}
+                        </form>
                     </li>
                 @else
                     <li class="nav-list-item @if (isset($pageTitle) && $pageTitle === "Login") active @endif">
-                    <a class="nav-link" href="#">Login</a>
+                    <a class="nav-link" href="{{ route('login') }}">Login</a>
                     </li>
                     <li class="nav-list-item @if (isset($pageTitle) && $pageTitle === "Register") active @endif">
-                        <a class="nav-link" href="#">Register</a>
+                        <a class="nav-link" href="{{ route('register') }}">Register</a>
                     </li>
                 @endif
             </ul>
