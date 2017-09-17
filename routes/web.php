@@ -25,3 +25,12 @@ Route::get('/abilities/{sessionId}', [
 	'as' => 'abilities',
 	'uses' => 'HeroesApiController@abilities'
 ]);
+
+Route::group(['prefix' => 'heroes/', 'as' => 'heroes.', 'middleware' => ['auth']], function () {
+
+    Route::get('/', [
+        'as' => 'view',
+        'uses' => 'HeroesController@view'
+    ]);
+
+});
