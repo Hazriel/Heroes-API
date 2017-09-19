@@ -15,7 +15,7 @@ class HeroesController extends Controller
 
     public function isHeroNameAvailable()
     {
-        if(GameHeroes::where('heroName', Input::get('heroName'))->exists())
+        if (GameHeroes::where('heroName', Input::get('heroName'))->exists())
             return 'This hero name is already taken.';
     }
 

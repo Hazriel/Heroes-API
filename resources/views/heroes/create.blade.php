@@ -8,6 +8,14 @@
     <script src="{{ asset('js/jquery.js') }}"></script>
     <script src="{{ asset('js/js-3.js') }}?v4"></script>
     <script src="{{ asset('js/js-2.js') }}?v4"></script>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <script type="text/javascript">
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+    </script>
 @endsection
 
 @section('content')
@@ -24,7 +32,7 @@
                             'use strict';
                             window.BFH = window.BFH || {};
                             window.BFH.barbershopSettings = {
-                                '_csrf_token': '{{ csrf_field() }}',
+                                '_csrf_token': '{{ csrf_token() }}',
                                 'nameRequired': true,
                                 'barbershop': false,
                                 'name_url': '{{ route('heroes.is-available') }}',
