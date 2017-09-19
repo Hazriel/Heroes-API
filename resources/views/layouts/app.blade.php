@@ -6,6 +6,7 @@
     <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet" type="text/css">
     @yield('styles')
+    @yield('scripts')
     @if (isset($pageTitle))
         <title>{{ $pageTitle }} - NeverBackDown</title>
     @else
@@ -30,7 +31,7 @@
                     <a class="nav-link" href="{{ route('home') }}">Home</a>
                 </li>
                 <li class="nav-list-item @if (isset($pageTitle) && $pageTitle === "Heroes") active @endif">
-                <a class="nav-link" href="#">Heroes</a>
+                <a class="nav-link" href="{{ route('heroes.view') }}">Heroes</a>
                 </li>
                 @if (Auth::check())
                     <li class="nav-list-item">
@@ -64,6 +65,5 @@
 
 <footer>
 </footer>
-@yield('scripts')
 </body>
 </html>

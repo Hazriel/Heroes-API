@@ -8,6 +8,7 @@
                     <h1>Your Heroes</h1>
                 </div>
                 <div class="nbd-section-body">
+                    <p><a href="{{ route('heroes.createForm') }}"><button type="button" class="btn btn-success"><span class="glyphicon glyphicon-plus-sign"></span> Create a Hero</button></a></p>
                     <p>Your heroes will be printed here.</p>
                 </div>
             </div>

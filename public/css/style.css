@@ -324,6 +324,47 @@ input[type="button"] {
     margin-bottom: 0;
 }
 
+/*--------------------------------
+  1) BASIC STYLES
+--------------------------------*/
+/* line 4, ../scss/_app-styles.scss */
+::-moz-selection {
+    background: #8ab15f;
+    color: #302429;
+    text-shadow: none;
+}
+
+/* line 5, ../scss/_app-styles.scss */
+::selection {
+    background: #ccc;
+    color: #302429;
+    text-shadow: none;
+}
+
+/* line 7, ../scss/_app-styles.scss */
+::-webkit-input-placeholder {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.73333rem;
+}
+
+/* line 8, ../scss/_app-styles.scss */
+:-moz-placeholder {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.73333rem;
+}
+
+/* line 9, ../scss/_app-styles.scss */
+::-moz-placeholder {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.73333rem;
+}
+
+/* line 10, ../scss/_app-styles.scss */
+:-ms-input-placeholder {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.73333rem;
+}
+
 /* Added fonts */
 @font-face {
     font-family: "Flatwheat";

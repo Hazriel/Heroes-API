@@ -33,4 +33,19 @@ Route::group(['prefix' => 'heroes/', 'as' => 'heroes.', 'middleware' => ['auth']
         'uses' => 'HeroesController@view'
     ]);
 
+    Route::get('create', [
+        'as'   => 'createForm',
+        'uses' => 'HeroesController@createForm'
+    ]);
+
+    Route::post('is-available', [
+        'as'   => 'is-available',
+        'uses' => 'HeroesController@isHeroNameAvailable'
+    ]);
+
+    Route::post('create', [
+        'as'   => 'create',
+        'uses' => 'HeroesController@create'
+    ]);
+
 });
