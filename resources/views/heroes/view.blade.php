@@ -10,7 +10,11 @@
                 <div class="nbd-section-body">
                     <p><a href="{{ route('heroes.createForm') }}"><button type="button" class="btn btn-success"><span class="glyphicon glyphicon-plus-sign"></span> Create a Hero</button></a></p>
                     <p>Token : {{ Auth::user()->game_token }}</p>
-                    <p>Your heroes will be printed here.</p>
+					<ul>
+						@foreach(Auth::user()->heroes as $hero)
+						<li>{{ $hero->heroName }}</li>
+						@endforeach
+					</ul>
                 </div>
             </div>
         </div>

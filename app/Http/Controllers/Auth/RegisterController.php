@@ -53,6 +53,16 @@ class RegisterController extends Controller
             'password' => 'required|string|min:6|confirmed',
         ]);
     }
+	
+	private function generateRandomString($length = 10) {
+		$characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+		$charactersLength = strlen($characters);
+		$randomString = '';
+		for ($i = 0; $i < $length; $i++) {
+			$randomString .= $characters[rand(0, $charactersLength - 1)];
+		}
+		return $randomString;
+	}
 
     /**
      * Create a new user instance after a valid registration.
@@ -69,7 +79,7 @@ class RegisterController extends Controller
             'birthday' => date('Y-m-d H:i:s'),
             'country' => 'FR',
             'language' => 'fr',
-            'game_token' => uniqid("", true)
+            'game_token' => $this->generateRandomString(15)
         ]);
     }
 }
