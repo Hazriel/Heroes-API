@@ -9,6 +9,11 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    public function heroes()
+    {
+        return $this->hasMany('App\GameHeroes');
+    }
+
     public $timestamps = false;
 
     /**

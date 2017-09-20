@@ -13,5 +13,15 @@ class GameHeroes extends Model
         'ip_address'
     ];
 
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
+
+    public function stats()
+    {
+        return $this->hasMany('App\GameStats', 'heroID');
+    }
+
     public $timestamps = false;
 }
