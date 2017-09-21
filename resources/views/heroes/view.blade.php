@@ -8,7 +8,10 @@
                     <h1>Your Heroes</h1>
                 </div>
                 <div class="nbd-section-body">
-                    <p><a href="{{ route('heroes.createForm') }}"><button type="button" class="btn btn-success"><span class="glyphicon glyphicon-plus-sign"></span> Create a Hero</button></a></p>
+                    <p>
+                        <a href="{{ route('heroes.createForm') }}"><button type="button" class="btn btn-success"><span class="glyphicon glyphicon-plus-sign"></span> Create a Hero</button></a>
+                        <a href="{{ route('heroes.abilities') }}"><button type="button" class="btn btn-info"><span class="glyphicon glyphicon-refresh"></span> Refresh your Abilities</button></a>
+                    </p>
                     <p>Token : {{ Auth::user()->game_token }}</p>
                     <div class="row">
                         <div class="col-sm-8">

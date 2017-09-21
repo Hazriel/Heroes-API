@@ -21,11 +21,6 @@ Route::get('/home', function () {
     return view('home');
 })->name('home');
 
-Route::get('/abilities/{sessionId}', [
-	'as' => 'abilities',
-	'uses' => 'HeroesApiController@abilities'
-]);
-
 Route::group(['prefix' => 'heroes/', 'as' => 'heroes.', 'middleware' => ['auth']], function () {
 
     Route::get('/', [
@@ -46,6 +41,11 @@ Route::group(['prefix' => 'heroes/', 'as' => 'heroes.', 'middleware' => ['auth']
     Route::post('create', [
         'as'   => 'create',
         'uses' => 'HeroesController@create'
+    ]);
+
+    Route::get('/abilities', [
+        'as' => 'abilities',
+        'uses' => 'HeroesController@abilities'
     ]);
 
 });

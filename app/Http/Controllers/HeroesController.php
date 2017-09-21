@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 use App\GameHeroes;
 use App\GameStats;
@@ -115,5 +116,14 @@ class HeroesController extends Controller
         ]);
 
         return redirect()->route('heroes.view')->withSuccess('You have successfully created a hero.');
+    }
+
+    public function abilities()
+    {
+        $userId = Auth::user()->id;
+        DB::update('UPDATE game_stats SET statsValue = \'\' WHERE statsKey = \'c_items\' AND user_id = :id', ['id' => $userId]);
+        DB::update('UPDATE game_stats SET statsValue = \'15\' WHERE statsKey = \'c_wallet_hero\' AND user_id = :id', ['id' => $userId]);
+
+        return redirect()->back()->withSuccess("Your abilities were successfully refreshed !");
     }
 }
