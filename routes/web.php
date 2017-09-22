@@ -43,9 +43,14 @@ Route::group(['prefix' => 'heroes/', 'as' => 'heroes.', 'middleware' => ['auth']
         'uses' => 'HeroesController@create'
     ]);
 
-    Route::get('/abilities', [
+    Route::get('abilities', [
         'as' => 'abilities',
         'uses' => 'HeroesController@abilities'
     ]);
+	
+	Route::get('reset-stats', [
+		'as' => 'reset-stats',
+		'uses' => 'HeroesController@resetStats'
+	]);
 
 });

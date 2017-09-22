@@ -46,7 +46,7 @@ class HeroesController extends Controller
             'ip_address' => request()->ip()
         ]);
 
-        // Level 1
+        // Level 30
         GameStats::create([
             'user_id' => Auth::id(),
             'heroID' => $hero->id,
@@ -120,6 +120,16 @@ class HeroesController extends Controller
 
         return redirect()->route('heroes.view')->withSuccess('You have successfully created a hero.');
     }
+	
+	public function resetStats()
+	{
+		// First save everything
+		$user = Auth::user();
+		foreach ($user->heroes as $hero)
+			$hero->resetStats();
+			
+		return redirect()->route('heroes.view')->withSuccess('Your stats have been reset');
+	}
 
     public function abilities()
     {
