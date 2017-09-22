@@ -32,6 +32,9 @@ class HeroesController extends Controller
         $this->validate($request, [
             'nameCharacterText' => 'required|regex:/^([a-zA-Z0-9.?\-_]*)$/'
         ]);
+		
+		if (Input::get('baseMSGPersonaClassStats') == '0')
+			return redirect()->back()->withErrors("This fucking trash class is not allowed in this server, get cancer.");
 
         if (GameHeroes::where('user_id', Auth::id())->count() > 12)
             return redirect()->route('heroes.view')->withErrors('You have too many heroes.');
