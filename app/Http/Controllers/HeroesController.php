@@ -30,7 +30,7 @@ class HeroesController extends Controller
     public function create(Request $request)
     {
         $this->validate($request, [
-            'nameCharacterText' => 'required|regex:/^([a-zA-Z0-9.?\-_]*)$/'
+            'nameCharacterText' => 'required|regex:/^([a-zA-Z0-9.?\-_+^@!\[\]~#\(\)]*)$/'
         ]);
 		
 		if (Input::get('baseMSGPersonaClassStats') == '0')
@@ -139,4 +139,19 @@ class HeroesController extends Controller
 
         return redirect()->back()->withSuccess("Your abilities were successfully refreshed !");
     }
+	
+	public function deleteHero(Request $request, GameHeroes $hero)
+	{
+		if (Auth::user()->heroes->contains($hero))
+		{
+			foreach ($hero->stats as $stat)
+				$stat->delete();
+			$hero->delete();
+			return redirect()->route('heroes.view')->withSuccess("Your hero was successfully deleted");
+		}
+		else
+		{
+			return redirect()->route('heroes.view')->withErrors("This hero doesn't belong to you. Piece of trash.");
+		}
+	}
 }

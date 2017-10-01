@@ -52,5 +52,10 @@ Route::group(['prefix' => 'heroes/', 'as' => 'heroes.', 'middleware' => ['auth']
 		'as' => 'reset-stats',
 		'uses' => 'HeroesController@resetStats'
 	]);
+	
+	Route::get('delete/{hero}', [
+		'as' => 'delete',
+		'uses' => 'HeroesController@deleteHero'
+	]);
 
 });

@@ -25,7 +25,7 @@
                                         </span>
                                         </div>
                                         <div class="hero-content">
-                                            <span class="name">{{ $hero->heroName }}</span>
+                                            <span class="name">{{ $hero->heroName }}</span> <a href="{{ route('heroes.delete', $hero->id) }}"><span class="glyphicon glyphicon-trash"></span></a>
                                             <div class="info">
                                                 <div class="info-content col-lg-11">
                                                     <div class="col-lg-4 col-xs-4 hero-team team-{{ $hero->getTeam() }}"><span class="hero-info">{{ $hero->getTeam() }}</span></div>
