@@ -21,6 +21,11 @@ Route::get('/home', function () {
     return view('home');
 })->name('home');
 
+Route::get('register', [
+    'as' => 'register',
+    'uses' => 'Auth\RegisterController@view'
+]);
+
 Route::group(['prefix' => 'heroes/', 'as' => 'heroes.', 'middleware' => ['auth']], function () {
 
     Route::get('/', [

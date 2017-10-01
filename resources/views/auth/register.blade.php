@@ -7,6 +7,7 @@
             <div class="panel panel-inverted">
                 <div class="panel-heading">Register</div>
                 <div class="panel-body">
+                    @if ($registrationAllowed)
                     <form class="form-horizontal" method="POST" action="{{ route('register') }}">
                         {{ csrf_field() }}
 
@@ -68,6 +69,9 @@
                             </div>
                         </div>
                     </form>
+                    @else
+                        You cannot register to the website with your current IP.
+                    @endif
                 </div>
             </div>
         </div>
